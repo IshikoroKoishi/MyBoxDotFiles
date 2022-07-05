@@ -1,0 +1,55 @@
+# i3status configuration file.
+# see "man i3status" for documentation.
+
+# It is important that this file is edited as UTF-8.
+# The following line should contain a sharp s:
+# ß
+# If the above line is not correctly displayed, fix your editor first!
+
+general {
+        color_good = "#A4B1CD"
+        color_bad = "#FF3E3E"
+        color_degraded = "#FFAF00"
+        colors = true
+        interval = 5
+        separator = "|"
+}
+
+order += "wireless _first_"
+order += "ethernet _first_"
+order += "disk /"
+order += "cpu_usage"
+order += "memory"
+order += "tztime local"
+
+wireless _first_ {
+        format_up = "直:%ip (%quality @%essid)"
+        format_down = "直:Connection lost"
+}
+
+ethernet _first_ {
+        format_up = "爵:%ip (%speed)"
+        format_down = "爵:Connection lost"
+}
+
+disk "/" {
+        format = ":%percentage_used"
+        low_threshold = 32
+}
+
+cpu_usage {
+        format = ":%usage"
+        degraded_threshold = 80
+        max_threshold = 95
+}
+
+memory {
+        format = "﬙:%used/%total"
+        threshold_degraded = "2G"
+        threshold_critical = "512M"
+        format_degraded = "MEMORY < %available"
+}
+
+tztime local {
+        format = "%Y/%m/%d %H:%M:%S"
+}
