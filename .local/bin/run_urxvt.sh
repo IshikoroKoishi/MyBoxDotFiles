@@ -14,7 +14,7 @@ args=(
     -fade 35                     # fading
 
     ## font
-    -fn 'xft:Inconsolata Nerd Font Mono-12, xft:IPAGothic'
+    -fn 'xft:FiraCode Nerd Font Mono-12, xft:IPAGothic'
     -letsp -1                    # letterSpace
     #-lsp 0                       # lineSpace
 
