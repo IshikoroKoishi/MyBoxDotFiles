@@ -19,7 +19,7 @@ function prompt {
     $Idx = 0
     $NArry = @()
     foreach ($P in $PArry) {
-        if ($Idx -lt $Len) {
+        if (($Idx -lt $Len) -and ($P -notmatch "[A-Z]+:")) {
             $NArry += $P.Substring(0, 1)
         } else {
             $NArry += $P
