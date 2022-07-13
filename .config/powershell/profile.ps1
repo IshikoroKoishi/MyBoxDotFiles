@@ -20,7 +20,7 @@ function prompt {
 
     Write-Host -ForegroundColor Cyan -NoNewline ("[" + (Get-Date -Format 'yyyy/MM/dd(ddd)HH:mm:ss') + "] ")
     Write-Host -ForegroundColor Green -NoNewline ([Environment]::UserName + "@")
-    Write-Host -ForegroundColor Cyan -NoNewline (hostname + " ")
+    Write-Host -ForegroundColor Cyan -NoNewline ((HostName) + " ")
     Write-Host -ForegroundColor Cyan (" " + $CurrentDir)
     return "$ "
 }
