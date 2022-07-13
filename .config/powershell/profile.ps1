@@ -1,3 +1,13 @@
+function MyGetGitStatus {
+    if (Test-Path ".git") {
+        if (Get-Command "git" -ea SilentlyContinue) {
+            return "<" + (git symbolic-ref --short HEAD) + ">"
+        }
+    }
+    return ""
+}
+
+
 function prompt {
     $Sep = [IO.Path]::DirectorySeparatorChar
     $CurrentDir = (Convert-Path .)
@@ -21,6 +31,7 @@ function prompt {
     Write-Host -ForegroundColor Cyan -NoNewline ("[" + (Get-Date -Format 'yyyy/MM/dd(ddd)HH:mm:ss') + "] ")
     Write-Host -ForegroundColor Green -NoNewline ([Environment]::UserName + "@")
     Write-Host -ForegroundColor Cyan -NoNewline ((HostName) + " ")
-    Write-Host -ForegroundColor Cyan (" " + $CurrentDir)
+    Write-Host -ForegroundColor Cyan -NoNewline (" " + $CurrentDir + " ")
+    Write-Host -ForegroundColor Green (MyGetGitStatus)
     return "$ "
 }
