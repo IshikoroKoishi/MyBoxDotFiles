@@ -33,5 +33,10 @@ function prompt {
     Write-Host -ForegroundColor Cyan -NoNewline ((HostName) + " ")
     Write-Host -ForegroundColor Cyan -NoNewline (" " + $CurrentDir + " ")
     Write-Host -ForegroundColor Green (MyGetGitStatus)
-    return "$ "
+    $CurrentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
+    if ($currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
+        return "# "
+    } else {
+        return "$ "
+    }
 }
